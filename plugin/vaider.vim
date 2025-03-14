@@ -1,6 +1,6 @@
 " vaider - Aider integration for Vim
 " Maintainer: Come Bertrand <come.bertrand@protonmail.com>
-" Version: 0.1
+" Version: 0.2
 " License: MIT
 
 if exists('g:loaded_aider')
