@@ -45,7 +45,33 @@ function! s:StartAider()
   " Store the buffer number for later use
   let g:aider_term_buf = bufnr('%')
 
+  " Set up autocmd to handle buffer close
+  execute 'augroup AiderTermClose_' . g:aider_term_buf
+  execute 'autocmd!'
+  execute 'autocmd BufWinLeave <buffer=' . g:aider_term_buf . '> call s:CleanupAider(' . g:aider_term_buf . ')'
+  execute 'augroup END'
+
   echo "Aider started in buffer " . g:aider_term_buf
+endfunction
+
+" Function to clean up aider when buffer is closed
+function! s:CleanupAider(bufnr)
+  " Only cleanup if this is our aider buffer
+  if a:bufnr == g:aider_term_buf
+    if bufexists(a:bufnr)
+      call term_sendkeys(a:bufnr, "/quit\<CR>")
+    endif
+
+    " Reset the buffer reference
+    let g:aider_term_buf = -1
+
+    " Remove the autocommand group for this buffer
+    execute 'augroup AiderTermClose_' . a:bufnr
+    execute 'autocmd!'
+    execute 'augroup END'
+
+    echo "Aider session terminated"
+  endif
 endfunction
 
 " Function to add current file to aider context
