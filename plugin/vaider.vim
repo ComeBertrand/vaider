@@ -45,9 +45,6 @@ function! s:StartAider()
   " Store the buffer number for later use
   let g:aider_term_buf = bufnr('%')
 
-  " Return to normal mode
-  normal! i
-
   echo "Aider started in buffer " . g:aider_term_buf
 endfunction
 
