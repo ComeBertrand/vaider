@@ -1,0 +1,62 @@
+*vaider.txt*  Aider integration for Vim
+
+Author:  Come Bertrand <come.bertrand@protonmail.com>
+License: MIT
+
+INTRODUCTION                                    *aider*
+
+Vaider provides seamless integration between Vim and the Aider AI coding
+assistant. It allows you to easily add files to Aider's context and control
+conversations from within Vim.
+
+REQUIREMENTS                                    *aider-requirements*
+
+- Vim 8.1+ with terminal support
+- Aider CLI tool installed and accessible in your PATH
+
+CONFIGURATION                                   *aider-configuration*
+
+                                                *g:aider_autocommit*
+Set to 1 to enable auto-commits. Default: 0 (disabled)
+>
+    let g:aider_autocommit = 0
+<
+
+                                                *g:aider_command*
+Command used to start Aider. Default: 'aider'
+>
+    let g:aider_command = 'aider'
+<
+
+                                                *g:aider_args*
+Additional arguments to pass to Aider. Default: ''
+>
+    let g:aider_args = '--model gpt-4'
+<
+
+
+COMMANDS                                        *aider-commands*
+
+:AiderStart                                     *:AiderStart*
+    Starts Aider in a new vertical terminal window.
+
+:AiderAddFile                                   *:AiderAddFile*
+    Adds the current file to Aider's context.
+
+:AiderReset                                     *:AiderReset*
+    Resets the current Aider conversation.
+
+USAGE                                           *aider-usage*
+
+1. Start Aider with :AiderStart or <Leader>as
+2. Add current file to Aider's context with :AiderAddFile or <Leader>aa
+3. Interact with Aider in the terminal window
+4. Reset conversation if needed with :AiderReset or <Leader>ar
+
+ABOUT                                           *aider-about*
+
+Vaider is maintained at:
+https://github.com/ComeBertrand/vaider
+
+For more information about Aider:
+https://github.com/Aider-AI/aider
